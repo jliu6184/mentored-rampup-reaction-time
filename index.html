@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src = "script.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,61 +16,17 @@
         </center>
     </div>
     <div class="container">
-        <center>
-        <input type="button" value="start by pressing any button" id="button"></button>
-        </center>
+        <div class="left-container">
+            <center>
+            <input type="button" class="block" value="Start by Pressing Any Keyboard Button" id="button"></button>
+            </center>
+        </div>
+        <div class="right-container">
+            <p id="key-text">Key Pressed: </p>
+            <p id="time-text">Time Elapsed This Round: </p>
+        </div>
     </div>
     
 </body>
-<script>
-
-let score = 0;
-const total = [];
-let start;
-let end;
-var timeElapsed = 0.000001;
-let final;
-function change(name)
-{
-    const alphabet = "abcdefghijklmnopqrstuvwxyz";
-    var random = alphabet[Math.floor(Math.random() * alphabet.length)];
-    if (score === 0) {
-        start = Date.now();
-        document.getElementById("button").value=random;
-    }
-    if (document.getElementById("button").value === name || score === 0) {
-        end = Date.now();
-        timeElapsed = (end - start) / 1000;
-        document.getElementById("button").value=random;
-        start = Date.now();
-        return timeElapsed;
-    } else {
-        return 0;
-    }
-}
-
-function average() {
-    let sum = 0;
-    for (let i = 0; i < total.length; i += 1) {
-        sum += total[i];
-    }
-    return sum / 10;
-}
-
-    document.addEventListener("keydown", (event) => {
-    var name = event.key;
-    var code = event.code;
-    timeElapsed = change(name);
-    if (timeElapsed !== 0) {
-        total.push(timeElapsed);
-        score++;
-        alert(`key pressed: ${name} \r\ntime elapsed: ${timeElapsed} seconds`); 
-    } 
-    if (score === 10) {
-        final = average();
-        alert(`game over! your average time: ${final} seconds`);
-    }
-}, true);
-
-</script>
+>>>>>>> master
 </html>
