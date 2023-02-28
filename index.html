@@ -9,21 +9,30 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="header" style = "border: 2px solid rgb(158, 158, 222);">
+    <div class="header">
         <center>
-        <h1>How fast is your reaction time?</h1>
-        <p>Press the corresponding letter on your keyboard!</p>
+        <h1 class="title">
+            <span class="title-word title-word-1">Test</span> <span class="title-word title-word-2"> Your </span><span class="title-word title-word-3">Reaction</span> <span class="title-word title-word-4">Time</span></h1>
+        <h3 class = "instructions">Press the corresponding letter on your keyboard!</h3>
         </center>
     </div>
     <div class="container">
-        <div class="left-container">
-            <center>
-            <input type="button" class="block" value="Start by Pressing Any Keyboard Button" id="button"></button>
-            </center>
+        <div class="top-container">
+            <div class="left-container">
+                <center>
+                <input type="button" class="block" value="Start by Pressing Any Keyboard Button" id="button"></button>
+                </center>
+            </div>
+            <div class="right-container">
+                <p id="key-text">Key Pressed: </p>
+                <p id="time-text">Time Elapsed This Round: </p>
+            </div>
         </div>
-        <div class="right-container">
-            <p id="key-text">Key Pressed: </p>
-            <p id="time-text">Time Elapsed This Round: </p>
+        <div class="bottom-container">
+            <center>
+                <h3 id="congrats"></h3>
+                <input type="button" class="block" value="Restart" id="restart-button"></button>
+            </center>
         </div>
     </div>
     

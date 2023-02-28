@@ -1,24 +1,106 @@
-
 .header {  
-    background-color: rgb(239, 244, 244);
+    background-color: rgb(243, 246, 246);
+    border: 5px dotted #3D8DAE;
     width: 100%;
     height: 100%;
 }
 
-.container {
+#congrats {
+    color: #3D8DAE;
+}
+
+.title-word {
+    animation: color-animation 4s linear infinite;
+  }
+  
+  .title-word-1 {
+    --color-1: #DF8453;
+    --color-2: #3D8DAE;
+    --color-3: #E4A9A8;
+  }
+  
+  .title-word-2 {
+    --color-1: #DBAD4A;
+    --color-2: #ACCFCB;
+    --color-3: #17494D;
+  }
+  
+  .title-word-3 {
+    --color-1: #ACCFCB;
+    --color-2: #E4A9A8;
+    --color-3: #ACCFCB;
+  }
+  
+  .title-word-4 {
+    --color-1: #3D8DAE;
+    --color-2: #DF8453;
+    --color-3: #E4A9A8;
+  }
+  
+  @keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-2)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-3)}
+    99%   {color: var(--color-3)}
+    100%  {color: var(--color-1)}
+  }
+  
+  /* Here are just some visual styles. 🖌 */
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    display: grid;
+    place-items: center;  
+    text-align: center;
+    background-color: rgb(245, 229, 239, 0.415);
+    padding: 7%;
+  }
+  
+  .title {
+    font-family: "Georgia", serif;
+    font-weight: 800;
+    font-size: 5vw;
+    text-transform: uppercase;
+  }
+
+
+.top-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    background-color: rgb(239, 244, 244);
+    padding: 10%;
     width: 100%;
-    height: 80%;
+    height: 50%;   
+}
+
+.bottom-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 90%;
+}
+
+.instructions {
+    font-family: "Georgia", serif;
+    color: #3D8DAE;
+}
+
+.right-container {
+    font-family: "Georgia", serif;
+    color: #3D8DAE;
 }
 
 .block {
     display: inline-block;
-    background-color: aliceblue;
-    outline: rgb(158, 158, 222);
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: rgb(243, 246, 246);
+    outline: #3D8DAE;
+    font-family:'Georgia', serif; 
+    font-size: medium;
+    color: #3D8DAE;
     text-align: center;
     padding: 20px;
     width: 100%;

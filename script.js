@@ -1,26 +1,36 @@
 let score = 0;
-const total = [];
+let total = new Array();
 let start;
 let end;
 var timeElapsed = 0.001;
 let final;
+let firstRun = true;
+
+window.onload = function() {
+    document.getElementById("restart-button").style.display='none';
+}
+
 function change(name)
 {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
     var random = alphabet[Math.floor(Math.random() * alphabet.length)];
-    if (score === 0) {
-        start = Date.now();
-        document.getElementById("button").value=random;
-    }
-    if (document.getElementById("button").value === name || score === 0) {
+    if (document.getElementById("button").value === name) {
         end = Date.now();
         timeElapsed = (end - start) / 1000;
         document.getElementById("button").value=random;
         start = Date.now();
         return timeElapsed;
-    } else if (score != 0){
+    } else {
         return 0;
     }
+}
+
+function startFunc() {
+    const alphabet = "abcdefghijklmnopqrstuvwxyz";
+    var random = alphabet[Math.floor(Math.random() * alphabet.length)];
+    start = Date.now();
+    document.getElementById("button").value=random;
+    firstRun = false;
 }
 
 function average() {
@@ -31,9 +41,36 @@ function average() {
     return sum / 10;
 }
 
-    document.addEventListener("keydown", (event) => {
+function congrats(final) {
+    document.getElementById("congrats").innerHTML = `Game over! \nYour average time is ${final} seconds.`;
+}
+
+function showButton() {
+    document.getElementById("restart-button").style.display='block';
+
+    document.getElementById("restart-button").addEventListener("click", (event) => {
+        score = 0;
+        total = new Array();
+        start = 0;
+        end = 0;
+        timeElapsed = 0.001;
+        final = 0;
+        firstRun = true;
+        document.getElementById("restart-button").style.display='none';
+        document.getElementById("congrats").innerHTML = "";
+        document.getElementById("button").value = "Start by Pressing Any Keyboard Button";
+        document.getElementById("key-text").innerHTML = `Key Pressed: `;
+        document.getElementById("time-text").innerHTML = `Time Elapsed This Round: `;
+    });
+}
+
+
+document.addEventListener("keydown", (event) => {
     var name = event.key;
-    var code = event.code;
+    if (score === 0 && firstRun == true) {
+        startFunc();
+        start++;
+    }
     timeElapsed = change(name);
     if (timeElapsed === 0.001) {
         score++;
@@ -46,9 +83,13 @@ function average() {
         document.getElementById("time-text").innerHTML = `Time Elapsed This Round: ${timeElapsed} seconds`;
         //alert(`key pressed: ${name} \r\ntime elapsed: ${timeElapsed} seconds`); 
     } 
-    if (score === 11) {
+    if (score === 10) {
         final = average();
-        alert(`game over! your average time: ${final} seconds`);
+        congrats(final);
+        //alert(`Game over! Your average time: ${final} seconds`);
+        document.getElementById("button").value=name;
         document.getElementById("time-text").innerHTML = `Average Time: ${final} seconds`;
+        showButton();
     }
+    console.log(total);
 }, true);
